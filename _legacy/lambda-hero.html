@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Superintelligence Cloud | Lambda</title>
+
+<style>
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntlMono-Regular.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntlMono-Regular.woff) format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl Mono";
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntlMono-Bold.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntlMono-Bold.woff) format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 300;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Light.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Light.woff) format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Regular.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Regular.woff) format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 600;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-SemiBold.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-SemiBold.woff) format("woff");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Suisse Intl";
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Bold.woff2) format("woff2"),
+       url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/SuisseIntl-Bold.woff) format("woff");
+}
+@font-face {
+  ascent-override: 92%;
+  descent-override: 22%;
+  font-display: swap;
+  font-family: apkarchivr21;
+  font-style: normal;
+  font-weight: 400;
+  line-gap-override: 0%;
+  src: url(https://21998649.fs1.hubspotusercontent-na1.net/hubfs/21998649/web-static/fonts/apkarchivr21_regular-webfont.woff) format("woff");
+}
+
+:root {
+  --color-neutral-1000: #000000;
+  --color-neutral-900: #0b0b0b;
+  --color-neutral-800: #262625;
+  --color-neutral-700: #42413e;
+  --color-neutral-600: #5e5d58;
+  --color-neutral-500: #797872;
+  --color-neutral-400: #95948c;
+  --color-neutral-300: #b0afa6;
+  --color-neutral-200: #cccbbf;
+  --color-neutral-100: #e7e6d9;
+  --color-neutral-0: #ffffff;
+  --color-ultraviolet-400: #815ef6;
+  --color-ultraviolet-500: #6236f4;
+  --color-shell: var(--color-neutral-100);
+  --color-terminal: var(--color-neutral-900);
+  --color-ultraviolet: var(--color-ultraviolet-500);
+  --color-background: var(--color-terminal);
+  --color-background-gray: var(--color-neutral-800);
+  --color-background-light: var(--color-shell);
+  --color-text-primary: var(--color-shell);
+  --color-text-secondary: var(--color-neutral-300);
+  --color-button-primary-text: var(--color-terminal);
+  --color-button-primary-background: var(--color-shell);
+  --color-button-secondary-text: var(--color-shell);
+  --color-button-secondary-background: var(--color-ultraviolet);
+  --color-button-secondary-background-hover: var(--color-ultraviolet-400);
+  --color-button-tertiary-text: var(--color-shell);
+  --font-mono: "Suisse Intl Mono", "Courier New", monospace;
+  --font-sans: "Suisse Intl", Helvetica, Arial, sans-serif;
+  --font-pixel: "apkarchivr21", monospace;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 600;
+  --text-sm: .875rem;
+  --text-xl: 1.5rem;
+  --text-5xl: 4.5rem;
+  --text-6xl: 6rem;
+  --text-7xl: 7.315rem;
+  --leading-none: 100%;
+  --leading-tight: 110%;
+  --leading-snug: 120%;
+  --leading-relaxed: 150%;
+  --tracking-tighter: -.02em;
+  --tracking-tight: -.01em;
+  --tracking-widest: .05em;
+  --space-2xs: 20px;
+  --space-xs: 40px;
+  --space-sm: 60px;
+  --space-md: 80px;
+  --space-lg: 100px;
+  --space-xl: 160px;
+  --box-shadow-rgb: 0 .99px 0 0 #ff0, .99px 0 0 0 #0ff, 1.98px .99px 0 0 #0f0, 0 -.99px 0 0 #00f, -.99px 0 0 0 #f0f, -1.98px 0 0 0 #f00;
+  --text-shadow-rgb: 0 .99px 0 #ff0, .99px 0 0 #0ff, 1.98px .99px 0 #0f0, 0 -.99px 0 #00f, -.99px 0 0 #f0f, -1.98px 0 0 #f00;
+  --transition-snappy: .1s cubic-bezier(.6, 0, .4, 1);
+  --transition-smooth: .4s cubic-bezier(.6, 0, .4, 1);
+  --header-height: 72px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+  :root {
+    --box-shadow-rgb: 0 .5px 0 0 #ff0, .5px 0 0 0 #0ff, 1px .5px 0 0 #0f0, 0 -.5px 0 0 #00f, -.5px 0 0 0 #f0f, -1px 0 0 0 #f00;
+    --text-shadow-rgb: 0 .5px 0 #ff0, .5px 0 0 #0ff, 1px .5px 0 #0f0, 0 -.5px 0 #00f, -.5px 0 0 #f0f, -1px 0 0 #f00;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  interpolate-size: allow-keywords;
+  height: 100%;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.no-wrap { white-space: nowrap; }
+
+.container {
+  width: 100%;
+  max-width: 1398px;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.siteHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent;
+}
+
+.siteHeader .container {
+  display: flex;
+  align-items: center;
+  height: var(--header-height);
+}
+
+.headerContentWrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+.headerLogoWrapper { flex-shrink: 0; }
+
+.headerLogo { display: block; }
+
+.mainNav { flex: 1; }
+
+.mainNav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 32px;
+}
+
+.mainNav a {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-snappy);
+  cursor: pointer;
+}
+
+.mainNav a:hover { color: var(--color-text-primary); }
+
+.utilityNav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0;
+  align-items: center;
+}
+
+.utilityNav a {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+  padding: 17px 20px;
+  transition: color var(--transition-snappy);
+}
+
+.utilityNav a:hover { color: var(--color-text-primary); }
+
+.button, button.button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  text-decoration: none;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 10px;
+  padding: 17px 36px;
+  border-radius: 0 !important;
+  background: var(--color-button-primary-background);
+  color: var(--color-button-primary-text);
+  box-shadow: var(--box-shadow-rgb);
+  transition: box-shadow var(--transition-snappy), color var(--transition-snappy), background var(--transition-snappy);
+}
+
+.button:hover { box-shadow: 0 0 0 0 transparent; }
+
+.button.button--secondary {
+  background: var(--color-button-secondary-background);
+  color: var(--color-button-secondary-text);
+  box-shadow: none;
+}
+
+.button.button--secondary:hover {
+  background: var(--color-button-secondary-background-hover);
+}
+
+.button.button--tertiary {
+  background: transparent;
+  color: var(--color-button-tertiary-text);
+  box-shadow: none;
+  border: 1px solid rgba(231,230,217,0.3);
+  padding: 13px 24px;
+  font-size: 0.75rem;
+}
+
+.button.button--tertiary:hover {
+  border-color: var(--color-neutral-100);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+
+.heroSection {
+  position: relative;
+  background-color: var(--color-background);
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  padding-top: clamp(var(--space-lg), 12vw, var(--space-xl));
+  padding-bottom: clamp(var(--space-lg), 12vw, var(--space-xl));
+}
+
+/* Background animation container */
+.backgroundAnimation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.animationContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  transition: opacity 1s ease-in-out;
+  opacity: 1;
+}
+
+.animationContainer canvas,
+.animationContainer > div {
+  min-width: 1800px;
+  height: auto;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+  overflow: hidden;
+  mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+@media (max-width: 1440px) {
+  .animationContainer { width: 100vw !important; height: 100vh !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backgroundAnimation { display: none; }
+  .reducedMotionTitle { display: block !important; }
+  .heroTitle { display: none !important; }
+}
+
+/* Eyebrow */
+.eyebrow {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  color: var(--color-shell);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  margin-bottom: 20px;
+  max-width: 98%;
+}
+
+@media (min-width: 768px) {
+  .eyebrow {
+    font-size: clamp(1.25rem, 2.5vw, var(--text-xl));
+    max-width: 80%;
+  }
+}
+
+/* Heading */
+.heroTitle,
+.reducedMotionTitle {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-size: 2.6rem;
+}
+
+.reducedMotionTitle { display: none; }
+.heroTitle { display: block; }
+
+@media (min-width: 480px) {
+  .heroTitle, .reducedMotionTitle { font-size: 3rem; }
+}
+@media (min-width: 768px) {
+  .heroTitle, .reducedMotionTitle { font-size: var(--text-5xl); }
+}
+@media (min-width: 1024px) {
+  .heroTitle, .reducedMotionTitle { font-size: var(--text-6xl); }
+}
+@media (min-width: 1280px) {
+  .heroTitle, .reducedMotionTitle { font-size: var(--text-7xl); }
+}
+
+/* FontSwap letters */
+.fontSwapLetter {
+  display: inline-block;
+  position: relative;
+}
+
+.fontSwapLetter .ghost {
+  position: absolute;
+  visibility: hidden;
+  pointer-events: none;
+  font-family: var(--font-pixel);
+}
+
+.fontSwapLetter .visible {
+  display: inline-block;
+  font-family: var(--font-sans);
+  transition: font-family 0s;
+}
+
+.fontSwapLetter.pixel-active .visible {
+  font-family: var(--font-pixel);
+}
+
+/* Buttons */
+.titleContainer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1398px;
+  padding-inline: 15px;
+  margin-inline: auto;
+}
+
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 18px;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+/* ============================================================
+   HERO CARDS
+   ============================================================ */
+
+.heroCardsWrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1398px;
+  padding-inline: 15px;
+  margin-inline: auto;
+  margin-top: 60px;
+}
+
+.heroCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(231,230,217,0.15);
+  border: 1px solid rgba(231,230,217,0.15);
+}
+
+@media (max-width: 768px) {
+  .heroCards { grid-template-columns: 1fr; }
+}
+
+.heroCard {
+  background: rgba(11,11,11,0.6);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.cardNumber {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-neutral-500);
+  letter-spacing: var(--tracking-widest);
+}
+
+.cardNumber::after {
+  content: "/";
+  color: var(--color-ultraviolet);
+  margin-left: 1px;
+}
+
+.heroCard h2 {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.cardCopy {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  flex: 1;
+}
+
+/* ============================================================
+   SECTION BORDER / MODULE
+   ============================================================ */
+
+.module-comp {
+  position: relative;
+  background-color: var(--color-background);
+}
+
+.sectionBorder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid var(--color-background-gray);
+}
+
+/* ============================================================
+   HEADER scroll behaviour
+   ============================================================ */
+
+.siteHeader {
+  border-bottom: 1px solid transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.siteHeader.scrolled {
+  background-color: rgba(11,11,11,0.9);
+  border-color: rgba(38,38,37,0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* mobile nav hidden on desktop */
+.mobileMenuToggle { display: none; }
+
+@media (max-width: 768px) {
+  .mainNav { display: none; }
+  .utilityNav { display: none; }
+  .mobileMenuToggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+  }
+  .mobileMenuToggle span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background: var(--color-shell);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="siteHeader" id="siteHeader">
+  <div class="container">
+    <div class="headerContentWrapper">
+      <div class="headerLogoWrapper">
+        <a href="/" class="headerLogo" aria-label="Lambda homepage">
+          <svg width="118" height="28" viewBox="0 0 171 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M54.5472 27.5003H64.1365V32.1322H49.0749V7.745H54.5472V27.5003ZM1.46484 1.70898H38.1092V38.2959H1.46484V1.70898ZM4.70436 35.0712H34.8607V4.93062H4.70436V35.0712ZM11.1443 7.79363L17.5182 19.0937L10.4261 32.1808H14.9939L19.7209 23.2484L24.7545 32.1808H29.4064L15.7962 7.79059L11.1443 7.79363ZM104.823 14.0424C103.656 14.0154 102.504 14.3163 101.496 14.9116C100.612 15.4613 99.8454 16.1847 99.2422 17.0391H99.1701C98.4188 15.1943 96.6308 14.0363 94.377 14.0363C91.3718 14.0363 89.8332 15.6988 89.0819 16.8233H88.9738L88.7243 14.4345H84.2888V32.1261H89.5838V21.8199C89.5665 21.3524 89.6389 20.8858 89.7972 20.4462C90.1187 19.5344 90.9421 18.4554 92.3365 18.4554C94.0554 18.4554 94.8428 19.9751 94.8428 22.2181V32.1322H100.138V21.7986C100.135 21.3192 100.207 20.8423 100.351 20.3854C100.513 19.8386 100.843 19.3582 101.293 19.0135C101.743 18.6688 102.29 18.4776 102.854 18.4676C104.609 18.4676 105.433 19.9508 105.433 22.522V32.1444H110.725V21.7135C110.725 16.4313 108.185 14.0424 104.823 14.0424ZM145.879 7.05204H151.318V32.117H146.63L146.38 29.5123H146.308C145.199 31.5031 143.087 32.5152 140.833 32.5152C136.683 32.5152 133.356 28.9349 133.356 23.4338C133.32 17.4646 137.004 14.0272 141.191 14.0272C143.339 14.0272 145.019 14.787 145.806 16.0179H145.879V7.05204ZM145.879 21.9141C145.872 21.5878 145.848 21.2621 145.806 20.9385C145.485 19.4554 144.304 18.2244 142.624 18.2244C140.154 18.2244 138.868 20.4674 138.868 23.2545C138.868 26.2573 140.334 28.1386 142.588 28.1386C143.336 28.1471 144.063 27.8885 144.642 27.4081C145.22 26.9278 145.612 26.2566 145.749 25.5126C145.855 25.0989 145.903 24.6724 145.894 24.2453L145.879 21.9141ZM169.343 21.6588V32.117H164.655L164.333 30.3451H164.225C163.077 31.7553 161.28 32.5152 159.197 32.5152C155.642 32.5152 153.524 29.9105 153.524 27.087C153.524 22.4916 158.148 21.1422 163.828 21.1422V20.0814C163.828 19.1423 163.326 17.802 160.634 17.802C159.215 17.8218 157.815 18.1417 156.526 18.7411L154.783 15.5955C156.003 14.9086 158.407 14.0394 161.604 14.0394C167.455 14.0394 169.343 17.5133 169.343 21.674V21.6588ZM164.008 24.3942C161.003 24.3942 158.566 24.6009 158.554 26.8256C158.554 28.245 159.843 28.6279 161.063 28.6279C161.687 28.6326 162.295 28.4396 162.804 28.0759C163.313 27.7123 163.697 27.1963 163.9 26.6007C163.974 26.2933 164.01 25.9779 164.008 25.6616V24.3942ZM131.253 22.9475C131.253 29.3117 127.298 32.4908 123.343 32.4908C121.33 32.4908 119.389 31.731 118.153 29.637H118.102L117.892 32.0927H113.474V7.06724H118.836V16.5285H118.905C119.929 15.0089 121.729 14.0363 124.131 14.0363C128.263 14.0363 131.298 17.5406 131.265 22.9627L131.253 22.9475ZM125.777 23.1663C125.777 20.431 124.575 18.2488 122.072 18.2488C120.624 18.2488 119.283 19.3703 118.929 20.9598C118.858 21.2923 118.822 21.6317 118.824 21.9719V24.5765C118.821 24.9048 118.856 25.2323 118.929 25.5522C119.084 26.2815 119.48 26.9359 120.051 27.4085C120.622 27.881 121.334 28.1438 122.072 28.1538C124.38 28.169 125.789 26.3606 125.789 23.1815L125.777 23.1663ZM81.9027 21.6467V32.1048H77.2328L76.9112 30.3329H76.8031C75.6521 31.7432 73.858 32.503 71.7755 32.503C68.2174 32.5212 66.1139 29.9257 66.1139 27.1022C66.1139 22.5068 70.7387 21.1574 76.4184 21.1574V20.0814C76.4184 19.1423 75.9165 17.802 73.224 17.802C71.8058 17.8215 70.4074 18.1414 69.119 18.7411L67.373 15.5955C68.5961 14.9086 71.0002 14.0394 74.1976 14.0394C80.0366 14.0394 81.9238 17.5133 81.9238 21.674L81.9027 21.6467ZM76.5686 24.382C73.5635 24.382 71.1264 24.5887 71.1144 26.8135C71.1144 28.2328 72.4036 28.6158 73.6236 28.6158C74.2469 28.6209 74.8559 28.4281 75.365 28.0643C75.8739 27.7006 76.2571 27.1844 76.4605 26.5886C76.5341 26.2811 76.5704 25.9657 76.5686 25.6494V24.382Z" fill="#e7e6d9"/>
+          </svg>
+        </a>
+      </div>
+
+      <nav aria-label="Primary" class="mainNav">
+        <ul>
+          <li><a href="/ai-infrastructure">AI factories</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="#">Company</a></li>
+        </ul>
+      </nav>
+
+      <div class="utilityNav">
+        <ul>
+          <li><a href="/login">Log in</a></li>
+          <li><a href="/sign-up" class="button" style="padding:13px 24px;font-size:0.75rem;">Get started</a></li>
+        </ul>
+      </div>
+
+      <button class="mobileMenuToggle" aria-label="Toggle mobile menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+<section class="heroSection module-comp" id="section-home-hero">
+
+  <!-- Background animation -->
+  <div aria-hidden="true" class="backgroundAnimation">
+    <div class="animationContainer" id="unicornContainer">
+      <div id="unicorn-scene" data-us-project="id-xh9di953zoiok925b692ln" style="width:1800px;height:1125px;"></div>
+    </div>
+  </div>
+
+  <!-- Eyebrow -->
+  <p class="eyebrow">The Superintelligence Cloud</p>
+
+  <!-- Reduced motion fallback -->
+  <h1 class="reducedMotionTitle">
+    <span>Supercomputers for training and inference</span>
+  </h1>
+
+  <!-- Animated heading -->
+  <h1 class="heroTitle" aria-label="Supercomputers for training and inference">
+    <span aria-hidden="true">
+      <span class="no-wrap">S<span class="fontSwapLetter" id="letter-u"><span class="ghost" aria-hidden="true">u</span><span class="visible">u</span></span>percomput<span class="fontSwapLetter" id="letter-e"><span class="ghost" aria-hidden="true">e</span><span class="visible">e</span></span>rs </span><br>
+      <span class="no-wrap">for</span> training <span class="no-wrap"><span class="fontSwapLetter" id="letter-a"><span class="ghost" aria-hidden="true">a</span><span class="visible">a</span></span>nd</span> inference
+    </span>
+  </h1>
+
+  <!-- CTA Buttons -->
+  <div class="titleContainer">
+    <div class="buttonGroup">
+      <a href="/sign-up" class="button" aria-label="Launch GPU instance">Launch GPU instance</a>
+      <a href="/talk-to-our-team" class="button button--secondary" aria-label="Talk to our team">Talk to our team</a>
+    </div>
+  </div>
+
+  <!-- Hero Cards -->
+  <div class="heroCardsWrapper">
+    <div class="heroCards">
+      <div class="heroCard">
+        <div class="cardNumber" aria-hidden="true">01</div>
+        <h2>You bring models. We bring compute.</h2>
+        <p class="cardCopy">Complete AI factories with high-density power, liquid cooling, and NVIDIA GPUs in one system.</p>
+        <a href="/ai-infrastructure" class="button button--tertiary" aria-label="Learn more">Learn more</a>
+      </div>
+      <div class="heroCard">
+        <div class="cardNumber" aria-hidden="true">02</div>
+        <h2>Your supercomputer. Your rules.</h2>
+        <p class="cardCopy">Train foundation models and serve billions of tokens on dedicated, single-tenant infrastructure.</p>
+        <a href="/superintelligence" class="button button--tertiary" aria-label="Learn more">Learn more</a>
+      </div>
+      <div class="heroCard">
+        <div class="cardNumber" aria-hidden="true">03</div>
+        <h2>Experts and orchestration included.</h2>
+        <p class="cardCopy">Managed clusters and co-engineering from the team building infrastructure for the largest AI labs.</p>
+        <a href="/superclusters" class="button button--tertiary" aria-label="Learn more">Learn more</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- Unicorn Studio -->
+<script src="https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.5.2/dist/unicornStudio.umd.js"></script>
+
+<script>
+(function() {
+
+  /* ---- Header scroll ---- */
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', function() {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  /* ---- Unicorn Studio background ---- */
+  function initUnicorn() {
+    if (typeof UnicornStudio === 'undefined') return;
+    UnicornStudio.addScene({
+      elementId: 'unicorn-scene',
+      fps: 60,
+      scale: 1,
+      dpi: 1.5,
+      filePath: 'https://lambda.ai/hubfs/web-static/motion/superintelligence-II-1.json',
+      interactivity: { mouse: { disableMobile: true } }
+    }).catch(function() {
+      /* silently fail if asset is unreachable */
+    });
+  }
+
+  if (document.readyState === 'complete') {
+    initUnicorn();
+  } else {
+    window.addEventListener('load', initUnicorn);
+  }
+
+  /* ---- FontSwap animation ---- */
+  var swaps = [
+    { id: 'letter-u', delay: 1000, loopDuration: 11000 },
+    { id: 'letter-e', delay: 4000, loopDuration: 11000 },
+    { id: 'letter-a', delay: 7000, loopDuration: 11000 }
+  ];
+
+  /* Duration the pixel font stays active (visual glitch flash) */
+  var PIXEL_ON_DURATION = 300;
+
+  swaps.forEach(function(swap) {
+    var el = document.getElementById(swap.id);
+    if (!el) return;
+
+    function cycle() {
+      /* activate pixel font after delay */
+      setTimeout(function() {
+        el.classList.add('pixel-active');
+        /* revert back after flash */
+        setTimeout(function() {
+          el.classList.remove('pixel-active');
+        }, PIXEL_ON_DURATION);
+      }, swap.delay);
+    }
+
+    /* Start first cycle then loop */
+    cycle();
+    setInterval(cycle, swap.loopDuration);
+  });
+
+})();
+</script>
+
+</body>
+</html>
